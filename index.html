@@ -31,59 +31,85 @@ background:#E3EDF7;
       
 #preloader {
   position: fixed;
-  inset: 0;
-  background: #f5f6fa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-/* ---- CARD ---- */
-.load-card {
+  top: 0;
+  left: 0;
   width: 100%;
-  border-radius: 16px;
-  padding: 16px;
-}
-
-/* ---- SKELETON BLOCK ---- */
-.skeleton {
-  background: #e3e6ec;
-  border-radius: 8px;
-  margin-bottom: 14px;
-  height: 18px;
-  position: relative;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
   overflow: hidden;
+  transition: all 0.8s ease;
 }
 
-/* Different sizes */
-.h-20 { height: 20px; }
-.h-30 { height: 30px; }
-.h-50 { height: 50px; }
-.h-120 { height: 160px; }
-.w-40 { width: 40%; }
-.w-60 { width: 60%; }
-.w-80 { width: 80%; }
-.w-100 { width: 100%; }
-
-/* Shimmer effect */
-.skeleton:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  transform: translateX(-100%);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,0.8),
-    transparent
-  );
-  animation: shimmer 1s infinite;
+/* Content center */
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Animation */
-@keyframes shimmer {
-  100% { transform: translateX(100%); }
+/* Jello Logo */
+.preloader-logo {
+  width: 55px;
+  height: 55px;
+  border-radius:10px;
+  border:1px solid #000;
+  animation: jello 1s infinite;
+}
+
+/* --------------------
+    JELLO Keyframes
+   -------------------- */
+@keyframes jello {
+  0% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+/* -------------------------
+   🔵 LOADING DOTS ANIMATION
+   ------------------------- */
+.loading-dots {
+  margin-top: 25px;
+  display: flex;
+  gap: 8px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: #8D5DF9;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounceDots 0.6s infinite alternate;
+}
+
+/* Timing offset for each dot */
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Dot bounce */
+@keyframes bounceDots {
+  from { transform: translateY(0); opacity: 0.6; }
+  to { transform: translateY(-8px); opacity: 1; }
+}
+
+/* ---------------------------
+   FLY UP FOLD REMOVE EFFECT
+   --------------------------- */
+#preloader.fly-up {
+  transform: translateY(-100%) scale(0.3);
+  filter: blur(4px);
+  opacity: 0;
+  border-radius: 0 0 50% 50%;
 }
 
 /* CSS reset */
@@ -916,65 +942,20 @@ body.chat-open #custom-chat-header {
 <head>
 <body>
 <div id="preloader">
-  <div class="load-card">
-    <div class="skeleton h-120 w-100"></div>
+  <div class="preloader-content">
+    <img src="https://files.cdn-files-a.com/uploads/10456964/normal_693a75caf0203.png" class="preloader-logo">
 
-    <div class="skeleton h-20 w-80"></div>
-    <div class="skeleton h-20 w-60"></div>
-
-    <div class="skeleton h-30 w-100"></div>
-    <div class="skeleton h-20 w-100"></div>
-    <div class="skeleton h-20 w-80"></div>
-
-    <div class="skeleton h-30 w-100"></div>
-  </div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const loader = document.getElementById("preloader");
-  const images = document.images;
-  let loaded = 0;
-  let totalImages = images.length;
-
-  // 🟢 Fallback: 2 seconds में content load मानकर loader हटा देगा
-  const fallback = setTimeout(done, 2000);
-
-  function done() {
-    clearTimeout(fallback);
-    loader.style.transition = "opacity 0.4s ease";
-    loader.style.opacity = "0";
-    setTimeout(() => loader.style.display = "none", 400);
-  }
-
-  // 🟢 Images 0 हों = HTML/CSS load मतलब तुरंत remove
-  if (totalImages === 0) return done();
-
-  // 🟢 Just in case: Cached images instantly count
-  for (let img of images) {
-
-    if (img.complete) {
-      loaded++;
-      if (loaded === totalImages) done();
-      continue;
-    }
-
-    img.addEventListener("load", () => {
-      if (++loaded === totalImages) done();
-    });
-
-    img.addEventListener("error", () => {
-      if (++loaded === totalImages) done();
-    });
-  }
-});
-</script>
+    <!-- 🔵 Loading dots -->
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
 </div>
 </div>
 </div> 
 </div></div>
                <div class="testimonial3">
                <div class="testimonial-content3">
-                          <a href="go:reward"><img data-src="https://m2.getsitecontrol.com/images/273034/d4c1f52732da5de46d4f633ddb6d2656_341852109.png" class="lazy-img" width="100%" /></a></div></div> 
+                          <a href="go:reward"><img src="https://m2.getsitecontrol.com/images/273034/d4c1f52732da5de46d4f633ddb6d2656_341852109.png" width="100%" /></a></div></div> 
                           </div></div></div>
                           </div></div>
 <script>
@@ -1127,7 +1108,7 @@ border-radius:50px; color:yellow; font-weight:bold;">
 
   <!-- कार्ड 1 -->
   <li style="width:45%; background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); text-align:center; padding:10px;">
-    <img data-src="https://m2.getsitecontrol.com/images/273034/925d70ea4b429880823dc7ab83e93b0f_341242821.png" class="lazy-img" width="100%" style="border-radius:5px; "><h3 style="margin: 0 0 10px;
+    <img src="https://m2.getsitecontrol.com/images/273034/925d70ea4b429880823dc7ab83e93b0f_341242821.png" width="100%" style="border-radius:5px; "><h3 style="margin: 0 0 10px;
       font-family:oswald;
       font-size: 12px;
       margin-left:-10px;
@@ -1149,7 +1130,7 @@ border-radius:50px; color:yellow; font-weight:bold;">
   <li style="position:relative; width:46%; background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); text-align:center; padding:10px; overflow:hidden;">
 
   <div style="height:75px; overflow:hidden;">
-    <img data-src="https://m2.getsitecontrol.com/images/273034/4b77b2b3aee52e60c58b8e683deea319_341674436.png" class="lazy-img" width="100%" height="100px" style="border-radius:5px;">
+    <img src="https://m2.getsitecontrol.com/images/273034/4b77b2b3aee52e60c58b8e683deea319_341674436.png" width="100%" height="100px" style="border-radius:5px;">
   </div>
 
   <p style="margin:0px 0 6px; background:rgb(155,20,350,0.65); padding:5px 0px; letter-spacing:1.5px; line-height:1.5; color:#fff; font-weight:700; font-size:10px;">मासिक एवं वार्षिक<br><span style="font-size:8px; letter-spacing:1.5px; ">करेंट अफेयर्स 2024-25</span>
@@ -1418,7 +1399,7 @@ setInterval(checkConnection, 10);
     background:#fff; padding:20px; border-radius:14px; 
     width:85%; max-width:360px; text-align:center;
     animation:popIn .3s ease-out;
-  "><img data-src="https://m2.getsitecontrol.com/images/273034/77da269439f696a0ff819bba65c84cf6_345200039.gif" class="lazy-img" style=" background:#fff; border-radius:50%; margin-top:-70px; padding:15px;" width="40%" /><h2 style="margin-bottom:5px; font-size:14px; font-family:Noto Sans Devanagari; line-height:1.6; color: #006999; font-weight:700; margin-top:5px;">"आज का सवाल – सही जवाब दो और Reward जीतो!"</h2><span style=" Font-size:10px; font-family:Noto Sans Devanagari; line-height:1.5;">आज का सवाल आपका इंतज़ार कर रहा है सही जवाब दें और खास रिवॉर्ड जीतें जिसमें आपको प्रीमियम पीडीऍफ़, टेस्ट सीरीज और भी बहुत कुछ प्राप्त होगा।</span>
+  "><img src="https://m2.getsitecontrol.com/images/273034/77da269439f696a0ff819bba65c84cf6_345200039.gif" style=" background:#fff; border-radius:50%; margin-top:-70px; padding:15px;" width="40%" /><h2 style="margin-bottom:5px; font-size:14px; font-family:Noto Sans Devanagari; line-height:1.6; color: #006999; font-weight:700; margin-top:5px;">"आज का सवाल – सही जवाब दो और Reward जीतो!"</h2><span style=" Font-size:10px; font-family:Noto Sans Devanagari; line-height:1.5;">आज का सवाल आपका इंतज़ार कर रहा है सही जवाब दें और खास रिवॉर्ड जीतें जिसमें आपको प्रीमियम पीडीऍफ़, टेस्ट सीरीज और भी बहुत कुछ प्राप्त होगा।</span>
     <h3 style="margin-bottom:15px; background:rgb(0,0,0); padding:7px 10px; border-radius:5px; color: orange; margin-top:15px;">क्या आप आज के प्रश्न का उत्तर देना चाहते हैं?</h3>
 
     <div style="display:flex; gap:60px; justify-content:center;">
@@ -1448,7 +1429,7 @@ setInterval(checkConnection, 10);
     <div class="closeIcon" onclick="closeQuiz()">❌</div>
 
     <div id="questionBox">
-      <div class="quizTitle"><img data-src="https://m2.getsitecontrol.com/images/273034/84eb13cfed01764d9c401219faa56d53_316359268.PNG" class="lazy-img" style=" position: absolute; z-index:-1; background:#fff; border-radius:10px; right:15px; margin-top:2px;" width="72%" /></div>
+      <div class="quizTitle"><img src="https://m2.getsitecontrol.com/images/273034/84eb13cfed01764d9c401219faa56d53_316359268.PNG" style=" position: absolute; z-index:-1; background:#fff; border-radius:10px; right:15px; margin-top:2px;" width="72%" /></div>
      <div class="timer-wrapper">
   <div id="timerBorder"></div>
   <div id="timer">90</div>
@@ -1550,7 +1531,7 @@ const quizBank = [
     }
   },
   
-   { question:"A, M का पति है जो N की भाभी है। N, R और U की बेटी है। M, U की पुत्रवधू है। A, U से किस प्रकार संबंधित है?", options: ["पिता", "बेटा", "भाई","साला"],
+   { question:"चार अक्षर-समूह दिए गए हैं, जिनमें से तीन किसी न किसी रूप में एकसमान हैं और एक भिन्न है। उस विकल्प का चयन कीजिए, जो विषम है।", options: ["MJH", "WTP", "VSQ","PMK"],
   answer: 1, rewardData: {
       title: "कंप्यूटर : सामान्य परिचय",
       url: "https://drive.google.com/file/d/1dH_h2cAMUawUzkNecbKxWrbJ6MhD9iHA/view?usp=sharing",
@@ -1558,14 +1539,14 @@ const quizBank = [
     }
   },
   
-   {question:'दूधिया मैग्नीशियम (मिल्क ऑफ मैग्नीशिया) में कौन सा क्षारक मौजूद होता है?', options:["मैग्नीशियम हाइड्रॉक्साइड","अमोनियम हाइड्रॉक्साइड","सोडियम हाइड्रोक्साइड","कैल्शियम हाइड्रॉक्साइड"], answer:0, rewardData: {
+   {question:'जब किसी संख्या को 3 से विभाजित किया जाता है, तो शेषफल 2 आता है l फिर, जब भागफल को 7 से विभाजित किया जाता है, तो शेषफल 5 आता है l मूल संख्या को 21 से विभाजित करने पर शेषफल कितना होगा ?', options:["17","14","16","13"], answer:0, rewardData: {
       title: "Topper Notes : Handwritten Science",
       url: "https://drive.google.com/drive/folders/12h4BrP7das4K7-7DQmmQWZq3EG8zXvhd?usp=sharing",
       btn: "Read Now"
     }
   },
    
-   {question:'आठ दोस्त A, B, C, D, E, F, G और H भोजन के लिए वृत्ताकार मेज़ के चारों ओर एक-दूसरे के सम्मुख बैठे हैं। A, D के विपरीत है और B के दाएँ तीसरा है। G, A और F के बीच में है। H, A के ठीक दाएँ हैं। E, C और D के बीच में है। C के विपरीत कौन बैठा है?', options:["B","G","F","E"], answer:2, rewardData: {
+   {question:'एक बस द्वारा 360 km की दूरी 6 घंटे में तय की गयी l यदि यह अपनी सामान्य चाल की एक-चौथाई चाल से चल रही हो, तो उतनी ही दूरी तय करने में कितना समय अधिक लगेगा ?', options:["16 घंटे","12 घंटे","18 घंटे","14 घंटे"], answer:2, rewardData: {
       title: "वार्षिक करेंट अफेयर्स 2025 (80% OFF)",
       url: "go:80%off",
       btn: "Buy Now"
@@ -1580,7 +1561,7 @@ const quizBank = [
     }
   },
            
- {question:"₹14460 की राशि A, B, C और D के बीच इस प्रकार विभाजित की जाती है कि A और B के हिस्सों का अनुपात 3 : 5 है, B और C का अनुपात 6 : 7 है और C और D का अनुपात 14 : 15 है। A और C के हिस्सों में कितना अंतर है?", options:["₹1440","₹1500","₹2100","₹2040"],
+ {question:"पांच अंकों वाली संख्या 672xy यदि 3, 7 और 11 से विभाज्य है, तो (6x+5y) का मान करें ?", options:["24","16","23","17"],
            answer:3, rewardData: {
       title: "करेंट अफेयर्स वार्षिकांक 2024 [Free]",
       url: "https://drive.google.com/file/d/1Hni833SJBV_YK4YmH-bVNZSoQATq5Rsh/view?usp=sharing",
@@ -1595,7 +1576,7 @@ const quizBank = [
     }
   },
    
-   {question:'एक निश्चित कूट भाषा में, "123" का अर्थ "hot filtered coffee", "356" का अर्थ "very hot day" और "589" का अर्थ “day and night" है। किस अंक का अर्थ "very" है?', options:["9","5","6","3"], answer:2, rewardData: {
+   {question:'सात मित्रों A, B, C, D, E, F और G में से B केवल चार अन्य मित्रों से लंबा है। C, D से लंबा है। A, F से लंबा है। E केवल एक व्यक्ति G से लंबा है  है, जो सभी मित्रों में सबसे छोटा है। B, A से लंबा है। सभी मित्रों में सबसे लंबा कौन है?', options:["A","B","C","E"], answer:2, rewardData: {
       title: "Indian & World Geography top 500 Question",
       url: "https://drive.google.com/file/d/1xW3WhRZYH-EClq36GMRY19jj6hxz8bSI/view?usp=sharing",
       btn: "Download PDF"
@@ -2243,23 +2224,44 @@ window.addEventListener("load", () => {
   });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const images = document.querySelectorAll(".lazy-img");
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("preloader");
+  const images = document.images;
+  let loaded = 0;
+  let totalImages = images.length;
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.remove("lazy-img");
-        obs.unobserve(img);
-      }
+  // Fallback: 2 sec बाद remove if slow network
+  const fallback = setTimeout(done, 4000);
+
+  function done() {
+    clearTimeout(fallback);
+
+    // 🔥 पहले logo + preloader ऊपर उड़कर fold होगा
+    loader.classList.add("fly-up");
+
+    // 🔥 Fly animation finish होने के बाद remove
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 800);
+  }
+
+  if (totalImages === 0) return done();
+
+  for (let img of images) {
+    if (img.complete) {
+      loaded++;
+      if (loaded === totalImages) done();
+      continue;
+    }
+
+    img.addEventListener("load", () => {
+      if (++loaded === totalImages) done();
     });
-  }, {
-    rootMargin: "100px"
-  });
 
-  images.forEach(img => observer.observe(img));
+    img.addEventListener("error", () => {
+      if (++loaded === totalImages) done();
+    });
+  }
 });
 </script>
 <script>
@@ -2273,7 +2275,7 @@ document.addEventListener("DOMContentLoaded", function () {
 if ("serviceWorker" in navigator) {
 
   const swCode = `
-    const CACHE_NAME = "auto-cache-v2";
+    const CACHE_NAME = "auto-cache-v3";
 
     self.addEventListener("install", e => {
       self.skipWaiting();
