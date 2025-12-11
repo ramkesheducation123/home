@@ -934,21 +934,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("preloader");
   const images = document.images;
   let loaded = 0;
+  let totalImages = images.length;
+
+  // 🟢 Fallback: 2 seconds में content load मानकर loader हटा देगा
+  const fallback = setTimeout(done, 2000);
 
   function done() {
+    clearTimeout(fallback);
     loader.style.transition = "opacity 0.4s ease";
     loader.style.opacity = "0";
     setTimeout(() => loader.style.display = "none", 400);
   }
 
-  if (images.length === 0) return done();
+  // 🟢 Images 0 हों = HTML/CSS load मतलब तुरंत remove
+  if (totalImages === 0) return done();
 
+  // 🟢 Just in case: Cached images instantly count
   for (let img of images) {
-    if (img.complete) loaded++;
-    else {
-      img.addEventListener("load", () => { if (++loaded === images.length) done(); });
-      img.addEventListener("error", () => { if (++loaded === images.length) done(); });
+
+    if (img.complete) {
+      loaded++;
+      if (loaded === totalImages) done();
+      continue;
     }
+
+    img.addEventListener("load", () => {
+      if (++loaded === totalImages) done();
+    });
+
+    img.addEventListener("error", () => {
+      if (++loaded === totalImages) done();
+    });
   }
 });
 </script>
@@ -2257,7 +2273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 if ("serviceWorker" in navigator) {
 
   const swCode = `
-    const CACHE_NAME = "auto-cache-v1";
+    const CACHE_NAME = "auto-cache-v2";
 
     self.addEventListener("install", e => {
       self.skipWaiting();
