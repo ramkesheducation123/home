@@ -1,0 +1,2312 @@
+<style>
+A {text-decoration: none;}
+ html {
+overflow: scroll;
+overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: 0px;
+}
+*::-webkit-scrollbar {
+            display: none; /* स्क्रॉल बार को पूरी तरह हटा देना */
+            width: 0px;
+            height: 0px;
+            /* remove scrollbar space /
+}
+/ optional: show position indicator in red */
+::-webkit-scrollbar-thumb 
+}
+body
+{
+user-select:none;
+ width:100%;
+ height: 100%;
+ margin:0 auto;
+background:#E3EDF7;
+ -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; box-sizing: border-box; content: none;
+ @import "https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css";
+ 
+      }
+      
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ---- CARD ---- */
+.load-card {
+  width: 100%;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* ---- SKELETON BLOCK ---- */
+.skeleton {
+  background: #e3e6ec;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  height: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Different sizes */
+.h-20 { height: 20px; }
+.h-30 { height: 30px; }
+.h-50 { height: 50px; }
+.h-120 { height: 160px; }
+.w-40 { width: 40%; }
+.w-60 { width: 60%; }
+.w-80 { width: 80%; }
+.w-100 { width: 100%; }
+
+/* Shimmer effect */
+.skeleton:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.8),
+    transparent
+  );
+  animation: shimmer 1s infinite;
+}
+
+/* Animation */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* CSS reset */
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  
+}
+
+html { font-size: 62.5%; }
+
+}
+
+.curved{
+     background: transparent; 
+     color:#ffff;
+     overflow:hidden;
+     background-size:100%;
+     text-align: left;
+     top:20px;
+   }
+   .curve{
+     display: flex;
+     justify-content: space-between;
+     padding-top:0px;
+     position:absulute;
+   }
+   .left{
+   margin-top: 12px;
+   margin-left: 12px;
+   }
+   .curved svg{
+     display: block;
+     width:100%;
+     position:absolute;
+     z-index:0;
+     margin-top:-72px;
+     overflow:hidden;
+
+   }
+
+.tooltip {
+    text-align: center;
+position: absolute;
+top:135px;
+right:32.2px;
+opacity:1;
+
+}
+ .sign {
+ width: 75px;
+  height:35px;
+  border: 2px solid #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5), 0 0 0 2px #000 inset;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  transform-origin: 50% -6px;
+  animation: swing 1.6s infinite alternate ease-in-out;
+  background:#000;
+  z-index: -1;
+	
+}
+
+.sign P {
+  font-weight: bold;
+  text-align: center;
+  font-family:kadwa;
+  line-height: 1.4;
+  border-radius:10px;
+  margin-top:0.8px;
+  background-color:#1365c0;
+
+
+}
+
+.sign:before {
+  position: absolute;
+  content: "";
+  border: 2px solid black;
+  border-bottom: none;
+  border-left: none;
+  width: 25px;
+  height: 25px;
+  top: -14px;
+  left: 50%;
+  z-index:0;
+  margin-left: -13px;
+  transform: rotate(-45deg);
+  border-radius: 0 5px 0 0;
+}
+.sign:after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  box-shadow:  0px 1px 3px black,  0px -0.3px 3px black;
+  height: 10px;
+  border-radius: 50%;
+  top: -23px;
+  left: 50%;
+  margin-left: -4px;
+  background: red;
+ 
+}
+/* sign swinging animation sequence */
+@keyframes swing {
+  0% { transform: rotate(-3deg) }
+  100% { transform: rotate(3deg) }
+}
+        
+/* Hide only the Crisp default chat icon, not the chat window */
+.crisp-client > .crisp-client-container .crisp-client-main {
+            display: none !important;
+        }
+        
+        .card {
+      position: relative;
+      background: white;
+      margin: 20px 15px 15px 15px; 
+      border-radius: 14px;
+      box-shadow:  4px 2px 10px 0 #b8c6d9, 4px 4px 10px  0 #b8c6d9, 
+     inset 4px -4px 10px 0 #fff;
+      width: auto;      
+      font-family:anek devanagari;
+      max-width: 480px;
+    }
+
+    .tag-question {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background: #2ecc71;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      animation: curvedBounce 1.5s ease-in-out infinite;
+      padding: 6px 20px;
+      border-radius: 20px;
+      transform: rotate(-10deg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    @keyframes curvedBounce {
+    0%   { transform: translateY(0) rotate(0deg); }
+    25%  { transform: translateY(0px) rotate(0deg); }
+    50%  { transform: translateY(5px) rotate(6deg); }
+    75%  { transform: translateY(-5px) rotate(-6deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+
+    .question-text {
+      margin-top: 20px;
+      font-size: 12px;
+      font-family:kadwa;
+      color: #333;
+      line-height: 2;
+    }
+
+    .support-badge {
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #feca57;
+      color: #333;
+      padding: 8px 16px 8px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      white-space: nowrap;
+    }
+
+    .support-badge img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+   .animated-button {
+      margin-top: 20px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(33,11,351,0.8), rgba(325,22,152,0.8));
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 13px;
+      font-weight:700;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align:center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(101, 80, 255, 0.3);
+      animation: pulse 2s infinite;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 500px) {
+      .support-badge {
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        justify-content: center;
+      }
+
+      .card {
+        padding: 18px;
+      }
+                
+   .container-wrap{ width:auto; margin:10px; }
+
+    /* Heading area */
+    .hero{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px;
+    }
+    .hero-left{
+      display:flex; flex-direction:column; gap:8px;
+    }
+   .main-title{
+      font-size:12.5px;
+      font-weight:700; font-family:arya; position:absolute; background:linear-gradient(90deg, rgba(320,20,0,0.95), rgba(0,0,0,0.95)); border-radius:3px 10px 10px 3px; padding: 5px 25px 5px 8px; margin-top:6.5px; color:#fff;
+      line-height:1.05;
+    }
+    /* full decorative line */
+    .decor-line{
+      height:6px; border-radius:999px; width:100%; margin-left:0px; background:linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.95)); box-shadow:0 6px 18px rgba(6,182,212,0.08);
+    }
+
+    .card3-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      width: 100%;
+      margin-top:14px;
+    }
+
+    .card3 {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      border-radius: 18px;
+      font-family: arya;
+      padding: 14px;
+      text-decoration: none;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 0 2px #fff inset;
+      min-height:60px;
+    }
+
+    .card3-content span1 {
+      font-size: 12.5px;
+      font-weight: 700;
+      font-family: arya;
+      line-height: 1.5;
+      display: block;
+      z-index: 2;
+    }
+
+    /* Curved Line */
+    .card3::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 55" preserveAspectRatio="none"><path d="M0,0 Q120,90 0,180 L360,180 L360,0 Z" fill="rgba(255,255,255,0.12)"></path></svg>');
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 1;
+      transform: translateX(0%);
+    }
+
+    /* Decorative SVG */
+    .card3 svg {
+      position: relative;
+      width: 44px;
+      color:#ccc;
+      height: 44px;
+      right:-5px;
+      top:-15px;
+      z-index: 2;
+      flex: 0 0 auto;
+    }
+
+    /* Color Variants */
+    .card3.hindi { background: linear-gradient(135deg, #000, #2563eb); }
+    .card3.history { background: linear-gradient(135deg, #000, #d97706); }
+    .card3.geo { background: linear-gradient(135deg, #000, #059669); }
+    .card3.raj { background: linear-gradient(135deg, #000, #db2777); }
+
+    /* responsive */
+    @media (max-width:400px){
+      .hero{ flex-direction:column; align-items:flex-start }
+      .decor-line{ margin-left:0 }
+    }
+  
+    
+    .card7-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.15rem;
+    padding: 14px;
+  }
+  
+   .card7-container a:first-child {
+  margin-left: 0px !important;
+  }
+
+  .card7 {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 133px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 0 2px #fff inset;
+    padding: 1rem 0.3rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .card7 img.icon {
+    width: 30px;
+    height: auto;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+  }
+
+  .card7 .title {
+    font-size: 10px;
+    font-family: 'Kadwa', sans-serif;
+    font-weight: bold;
+    color: #2d3a4b;
+    line-height: 1.5;
+  }
+
+  .card7 .subtitle {
+    font-size: 9px;
+    color: #4a5a6a;
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: 'Arya', sans-serif;
+    line-height: 1.3;
+  }
+  .card7 .subtitle1 {
+  position: relative;
+  display: inline-block;
+  font-size: 9px;
+  font-weight: bold;
+  color: #4a5a6a;
+  margin-top: 0px;
+  font-family: 'Arya', sans-serif;
+  line-height: 1.3;
+}
+
+.card7 .subtitle1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 8px;
+  background: radial-gradient(circle at 50% 100%, #ffc107 40%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+  .tag7 {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background: linear-gradient(135deg, red, yellow);
+  color: #fff;
+  font-size: 9.5px;
+  padding: 3px 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 16px;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+  a.card7-link {
+    text-decoration: none;
+  }
+
+  .card7-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card7-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+ .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-family:kadwa;
+      height: 65px;
+      background: rgb(0,0,0,0.88);
+      line-height:1.5;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.15);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      z-index: 1000;
+    }
+
+    .bottom-bar::before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 40px;
+      background: #f4f4f4;
+      border-radius: 0 0 30px 30px ;
+      box-shadow: inset 0 10px 6px rgba(0, 0, 0, 0.1);
+      z-index: -1;
+    }
+
+    .tab {
+      text-align: center;
+      flex: 1;
+      padding: 6px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .tab i {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+      color: #ccc;
+    }
+
+    .tab span {
+      display: block;
+      font-size: 9px;
+      font-family:kadwa;
+      font-weight:600;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    .tab.active i,
+    .tab.active span {
+      color: orange;
+    }
+
+    .tab.middle {
+      transform: translateY(-23px);
+      margin-left:1.05px;
+      z-index: 2;
+    }
+
+    .tab.middle i {
+      font-size: 15px;
+      font-weight:700;
+      background: deeppink;
+      width:53px;
+      height:52px;
+      border:1px solid rgb(0,0,0,0.4);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 50%;
+     box-shadow: 0 -3px 10px rgba(0,0,0,0.15);
+    }
+
+    .tab.middle.active i {
+      background: #0056b3;
+    }
+    
+     @keyframes slideIn {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+  }
+  
+  }
+    
+    .badge {
+      background: red;
+      color: #fff !important;
+      border-radius: 50%;
+      padding: 2.5px 5px;
+      font-size: 8px !important;
+      position: absolute;
+      top: -3px;
+      right: 17px;
+    }
+    
+    #custom-chat-header {
+    display: none;
+    position: fixed;
+    background:#fff;
+    bottom: 14px;
+    right: 14px;
+    color: transparent;
+    font-family:kadwa;
+    z-index: 2147483647;
+    font-size: 9px;
+    font-weight: 600;
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    pointer-events: auto;              /* 👈 अब यह क्लिक करेगा */
+    z-index: 999999999 !important; 
+}
+
+/* Show only when chat is open */
+body.chat-open #custom-chat-header {
+    display: block;
+}
+
+/* AI Sparkle Styling */
+.ai-spark {
+    position: relative;
+    display: inline-block;
+    background-image: url('https://m2.getsitecontrol.com/images/273034/f3f92bfa32bcc8958c48fe82bd1c0943_330077797.png');
+    background-size:100%;
+    color: transparent;
+    font-weight: 700;
+    padding: 10px 12px;
+    margin-left: 3px;
+    border-radius: 50px;
+    vertical-align: middle;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+/* Spark animation on AI only */
+.ai-spark::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(0,255,255,0), rgba(0,255,255,0.7), rgba(0,255,255,0));
+    animation: sparkle 2s infinite;
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes sparkle {
+    0% { left: -100%; }
+    60% { left: 100%; }
+    100% { left: 100%; }
+}
+    
+    #quizOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 9999;
+}
+
+.quizBox {
+  width: 90%;
+  padding: 14px;
+  animation: slideUp 0.45s ease;
+  position: fixed;
+    background: linear-gradient(180deg,#00a1ed 30%, #b9e2f8 35%);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    margin:20px;
+    border-radius: 10px;
+    bottom:50px;
+    z-index: 9999;
+}
+
+.closeIcon {
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    cursor: pointer;
+    border-radius:50%;
+    background:#fff;
+    padding:12px;
+}
+
+/* Timer */
+.timer-wrapper {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+#timerBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+#timer {
+  position:absolute;
+  font-size: 16px;
+  Background:#000;
+  padding:12px 10px;
+  right:5px;
+  width:40px;
+  border-radius:50%;
+  font-weight:bold;
+  text-align: center;
+  color: #ffa257;
+  top: 4px;
+}
+
+/* Question */
+.quizQuestion {
+  font-size: 13.5px;
+    font-family:Noto Sans Devanagari;
+    background:yellow;
+    padding:10px 14px; 
+    border-radius:5px;
+    color:#000 !important;
+    line-height:1.55;
+    font-weight:700;
+    margin-bottom: 20px;
+    margin-top:16px;
+}
+
+/* Options */
+.option {
+    width: 100%;
+    margin: 8px 0;
+    text-align:left;
+    padding: 10px;
+    border: 1px solid #000;
+    font-family:Noto Sans Devanagari;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background: rgba(255, 255, 255);
+    color: #000;
+  transition: 0.25s;
+}
+
+.option:hover {
+  background: rgba(0,0,0,0.8);
+  border-color: #fff;
+  color:orange;
+}
+
+.correct {
+  background: #00bd42 !important;
+  border-color: #00ff99 !important;
+}
+
+.wrong {
+  background: rgba(255,80,80,0.25) !important;
+  border-color: #ff5555 !important;
+  animation: shake 0.3s;
+}
+
+#rewardBox {
+  display: none;
+  text-align: center;
+  font-family:Noto Sans Devanagari;
+  padding-top: 10px;
+  background:#000;
+  border-radius:5px;
+  width: 295px;
+  padding:20px 20px 50px 20px;
+  bottom:50px;
+}
+
+.rewardBadge {
+  font-size: 14px;
+  font-weight:700;
+  line-height:1.6;
+  margin-bottom: 10px;
+  color: orange;
+}
+
+.rewardText {
+  font-size: 13px;
+  color:#fff;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+.primaryBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  font-weight:700;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#failPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(30,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.failBox {
+  background: rgba(55,0,0,1);
+  padding: 30px 20;
+  border-radius: 16px;
+  color:#fff;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  animation: popIn 0.35s ease;
+  border: 1px solid rgba(255,100,100,0.4);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.failSVG {
+  margin-bottom: 5px;
+}
+
+/* CLOSE ANIMATION */
+.jello-close {
+  animation: closeSheet 0.55s forwards;
+}
+    
+/* 🔥 Flash Animation on Show */
+@keyframes flashIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: brightness(150%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(110%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(100%);
+  }
+}
+
+/* 👇 Slide Down Animation on Close */
+@keyframes slideOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shake {
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-3px); }
+}
+
+@keyframes closeSheet {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes blinkTimer {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+  
+</style>
+<style>
+.bdg{background:rgb(255,255,255,0.4);color:#000; font-family:Oswald; letter-spacing:1px; padding:5px 10px;border-radius:14px;font-size:8px;font-weight:600}
+.bgc1{position:absolute;right:-40px;top:-50px;width:100px;height:100px;background:rgba(15,55,255,0.12);border-radius:50%;}
+.bgc2{position:absolute;left:-50px;bottom:-50px;width:180px;height:180px;background:rgba(255,55,25,0.10);border-radius:50%;}
+</style>
+<style>
+@keyframes pop {
+  from { transform:translateY(0px); }
+  to { transform:translateY(-6px); }
+}
+</style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </div>
+   
+</div></div>
+<div></div>
+<head>
+<body>
+<div id="preloader">
+  <div class="load-card">
+    <div class="skeleton h-120 w-100"></div>
+
+    <div class="skeleton h-20 w-80"></div>
+    <div class="skeleton h-20 w-60"></div>
+
+    <div class="skeleton h-30 w-100"></div>
+    <div class="skeleton h-20 w-100"></div>
+    <div class="skeleton h-20 w-80"></div>
+
+    <div class="skeleton h-30 w-100"></div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("preloader");
+  const images = document.images;
+  let loaded = 0;
+
+  function done() {
+    loader.style.transition = "opacity 0.4s ease";
+    loader.style.opacity = "0";
+    setTimeout(() => loader.style.display = "none", 400);
+  }
+
+  if (images.length === 0) return done();
+
+  for (let img of images) {
+    if (img.complete) loaded++;
+    else {
+      img.addEventListener("load", () => { if (++loaded === images.length) done(); });
+      img.addEventListener("error", () => { if (++loaded === images.length) done(); });
+    }
+  }
+});
+</script>
+</div>
+</div>
+</div> 
+</div></div>
+               <div class="testimonial3">
+               <div class="testimonial-content3">
+                          <a href="go:reward"><img data-src="https://m2.getsitecontrol.com/images/273034/d4c1f52732da5de46d4f633ddb6d2656_341852109.png" class="lazy-img" width="100%" /></a></div></div> 
+                          </div></div></div>
+                          </div></div>
+<script>
+  const persistentTabCode = 'home';
+</script>
+<div id="custom-chat-header">
+    RAMKESHeducation<span class="ai-spark">AI</span>
+</div>
+<!-- Bottom Bar -->
+<div class="bottom-bar">
+  <div class="tab active default-tab" data-url="go:home" data-code="home">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </div>
+  <div class="tab" data-url="GO:may" data-code="ca">
+    <i class="fas fa-newspaper"></i>
+    <span>Current Affairs</span>
+  </div>
+  <div class="tab middle" data-url="go:cmagazine" data-code="add">
+  <i class="fas fa-book-open" style="color:#fff;">
+  <span style="color:#fff; letter-spacing:1px; margin-top:5px;">PYP</span></i>
+</div>
+  <div class="tab" data-url="go:quiz" data-code="quiz">
+    <i class="fas fa-clipboard-question"></i>
+    <span>GK Quiz</span>
+  </div>
+  <div class="tab" data-url="go:purchase" data-code="store">
+  <i class="fas fa-cart-shopping"></i>
+  <i class="fas fa-check fa-stack-1x" style="color:green; font-size:10px;"></i>
+    <span>My Purchase</span>
+  </div>
+</div>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</p>
+  <div class="curved">
+     <div class="curve">
+      <div class="left">
+      </div>
+      <div class="right">
+      <div style=""><span></span>
+<html>
+<head>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href = 'https://fonts.googleapis.com/css?family=Arya' rel='stylesheet'>
+    <link href ='https://fonts.googleapis.com/css?family=Noto Sans Devanagari' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Kadwa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Saira Extra Condensed' rel='stylesheet'>
+
+            <div>
+               </span>
+      </div>
+     </div> </div>
+     </div>
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 1440 260">
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- तेज़ और डार्क shadow -->
+      <feDropShadow dx="0" dy="-14" stdDeviation="8" flood-color="rgba(0,0,0,0.4)" ></feDropShadow>
+    </filter>
+  </defs>
+
+  <path fill="#E3EDF7" fill-opacity="1" filter="url(#shadow)"
+    d="M0,160L48,154.7C96,149,192,139,288,219.3C384,260,580,92,76,256.7C672,41,768,139,864,150.7C960,155,1056,83,1152,30.0C1248,10.5,1344,220,1492,0L5280,-80.2L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+  </path>
+</svg>
+
+  
+</div>  
+</div>
+</div></div></div></div>
+<style>
+.testimonial2{
+          
+            margin: auto;
+        }
+        .testimonial .testimonial-content1{
+            position: relative;
+        }
+        .testimonial3{
+          z-index:-1;
+            margin: auto;
+        }
+        .testimonial .testimonial-content3{
+            position: absolute; z-index:-1;
+        }
+</style>
+
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="script.js"></script>
+</head>
+    <div class="tooltip"><img src="https://files.cdn-files-a.com/uploads/1212832/2000_66ec4ee7dfe43.png" style=" position: absolute; right:27.4px; z-index:1; margin-top:-25px;" width="15" /><div class="sign one">
+
+    <div class="container" >
+                               
+     <div class="testimonial2">
+                        <div class="testimonial-content1">
+                         <button id="myRewardsBtn"
+style="background:transparent; font-family:oswald; font-size:10px; line-height:1.2; margin-top:-1.5px; padding:4px 5px; border:none; 
+border-radius:50px; color:yellow; font-weight:bold;">
+🎁 My Daily<br> Rewards
+</button></div><br /> </div>
+</span></b></span></div>
+      </div> 	</div> 	</div> 	</div> 	</div> 	
+
+</div></div>
+</div></div></div>
+<div class="separator" style="clear: both; position:reletive; margin-top:5px;">
+<div class="card7-container">
+
+  <a href="go:events" class="card7-link">
+    <div class="card7">
+      <img src="https://www.svgrepo.com/show/375489/release-notes.svg" class="icon" alt="Events">
+      <div class="title">राष्ट्रीय-अन्तर्राष्ट्रीय</div>
+      <div class="subtitle1">Highlight Events</div>
+    </div>
+  </a>
+  
+   <a href="go:magazine" class="card7-link">
+    <div class="card7">
+      <img src="https://www.svgrepo.com/show/288264/open-book.svg" class="icon">
+      <div class="title">General Knowledge</div>
+      <div class="subtitle">निःशुल्क PDF</div>
+    </div>
+  </a>
+
+  <a href="go:jilewar" class="card7-link">
+    <div class="card7">
+      <img src="https://www.svgrepo.com/show/504795/read-you.svg" class="icon" alt="District GK">
+      <div class="title">मध्यप्रदेश जिलेवार GK</div>
+      <div class="subtitle">Updated 2025</div>
+    </div>
+  </a>
+ 
+
+  <a href="go:news" class="card7-link">
+    <div class="card7">
+      <img src="https://cdn.testbook.com/qb_resources/super-live-class.svg" class="icon" alt="Live News" width="33">
+      <div class="title">Live News</div>
+      <div class="subtitle">Latest Updates</div>
+    </div>
+  </a>
+</div></a></div></div>
+</div></div></span>
+
+<div class="separator" style="clear: both; position:reletive; margin-top:8px;">
+
+<ul style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:0; list-style:none; font-family:kadwa;">
+
+  <!-- कार्ड 1 -->
+  <li style="width:45%; background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); text-align:center; padding:10px;">
+    <img data-src="https://m2.getsitecontrol.com/images/273034/925d70ea4b429880823dc7ab83e93b0f_341242821.png" class="lazy-img" width="100%" style="border-radius:5px; "><h3 style="margin: 0 0 10px;
+      font-family:oswald;
+      font-size: 12px;
+      margin-left:-10px;
+      margin-top:-16px;
+      text-align:left;
+      max-width:160px;
+      font-weight:700;
+      background:linear-gradient(90deg,rgba(255, 0, 0, 1) 5%, #fff 5%, #fff 100%);
+      padding:2px 10px 2px 22px;
+      color:#000;
+    ">Math & Reasoning <span style="color:yellow; padding:0px 5px; border-radius:5px; font-weight:100; background:green; font-size:10px;">FREE</span> Test Series 2025</h3>
+    <p style="font-size:9px; text-align:left; margin:0 auto; width:100%; color:#222;"> Level up your preparation: Math & Reasoning practice with detailed solutions & smart analysis.    </p>
+    <div style="margin-top:10px;">
+     <a href="go:math" style="flex:1; background:#000; box-shadow: inset -2px -2px 1px 0 red, inset 2px 2px 6px 0 #007bff; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; border-radius:4px; padding:5px 10px; text-decoration:none; font-weight:600;">Attempt Now</a>
+    </span>
+  </li>
+
+  <!-- कार्ड 2 (3 बटन वाला) -->
+  <li style="position:relative; width:46%; background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); text-align:center; padding:10px; overflow:hidden;">
+
+  <div style="height:75px; overflow:hidden;">
+    <img data-src="https://m2.getsitecontrol.com/images/273034/4b77b2b3aee52e60c58b8e683deea319_341674436.png" class="lazy-img" width="100%" height="100px" style="border-radius:5px;">
+  </div>
+
+  <p style="margin:0px 0 6px; background:rgb(155,20,350,0.65); padding:5px 0px; letter-spacing:1.5px; line-height:1.5; color:#fff; font-weight:700; font-size:10px;">मासिक एवं वार्षिक<br><span style="font-size:8px; letter-spacing:1.5px; ">करेंट अफेयर्स 2024-25</span>
+  </p>
+
+  <p style="font-size:8.5px; text-align:left; margin:0 auto; width:100%; color:#222;">आगामी सभी प्रतियोगी परीक्षाओं को ध्यान में रखते हुए करेंट अफेयर्स पर मजबूत पकड़ के लिए तैयार की गई मासिक एवं वार्षिक करेंट अफेयर्स पत्रिकाएं
+  </p>
+
+  <!-- 📚 बटन सेक्शन -->
+  <div style="display:flex; justify-content:center; line-height:1.6; gap:10px; margin:10px 0;">
+   
+    <a class="buy-btn" href="go:cumagazine" style="flex:1; background: #000; box-shadow: inset -2px -2px 1px 0 #007bff, inset 2px 2px 6px 0 red; font-size:9px; color:#fff; display:flex; align-items:center; letter-spacing:1px; justify-content:center; border-radius:4px; font-weight:900; padding:5px 9px;">
+        अभी पढ़ें<svg width="20px" height="20px" viewBox="0 -4 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-362.000000, -939.000000)" fill="#fff">
+            <path d="M363,948 C362.447,948 362,948.448 362,949 C362,949.553 362.447,950 363,950 L370,950 L370,948 L363,948 L363,948 Z M388,939 L372,939 C370.896,939 370,939.896 370,941 L370,948 L384.586,948 L379.343,942.758 C378.953,942.367 378.953,941.733 379.343,941.344 C379.733,940.953 380.367,940.953 380.758,941.344 L387.657,948.243 C387.865,948.451 387.954,948.728 387.94,949 C387.954,949.272 387.865,949.549 387.657,949.758 L380.758,956.657 C380.367,957.048 379.733,957.048 379.343,956.657 C378.953,956.267 378.953,955.633 379.343,955.243 L384.586,950 L370,950 L370,957 C370,958.104 370.896,959 372,959 L388,959 C389.104,959 390,958.104 390,957 L390,941 C390,939.896 389.104,939 388,939 L388,939 Z" id="arrow-right" sketch:type="MSShapeGroup">
+
+</path>
+        </g>
+    </g>
+</svg>
+    </a>
+  </div>
+</li>
+      </a>
+     </div>
+</div>
+</div></div>
+</div></div></div>
+<div class="separator" style="clear: both; position:reletive; margin-top:15px;">
+
+ <div class="container-wrap">
+    <div class="hero">
+      <div class="hero-left">
+        <h1 class="main-title">सम्पूर्ण मध्य प्रदेश — सामान्य ज्ञान</h1>
+    </div>
+    <div class="decor-line" aria-hidden="true"></div>
+
+    <div class="card3-grid" role="list" aria-label="Courses">
+      <a role="listitem" class="card3 hindi" href="go:hindigr">
+        <div class="card3-content">
+          <div>
+            <span1>सामान्य हिंदी<br>व्याकरण</span1>
+            <div style="height:4px"></div>
+            <div style="font-size:9px;color:#ccc; line-height:1.5; max-width:200px">All chapters of hindi grammar</div>
+          </div>
+        </div>
+        <!-- Book icon -->
+        <svg class="icon hv-grid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="80" height="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+  <!-- grid -->
+  <rect x="8" y="8" width="48" height="48" rx="3" ></rect>
+  <path d="M8 24h48M8 40h48M24 8v48M40 8v48" stroke-opacity="0.54"></path>
+  <!-- sample akshara -->
+  <text x="14" y="22" font-size="10" fill="currentColor">अ</text>
+  <text x="30" y="22" font-size="10" fill="currentColor">आ</text>
+  <text x="46" y="22" font-size="10" fill="currentColor">इ</text>
+  <text x="14" y="38" font-size="10" fill="currentColor">क</text>
+  <text x="30" y="38" font-size="10" fill="currentColor">ख</text>
+  <text x="46" y="38" font-size="10" fill="currentColor">ग</text>
+</svg>
+      </a>
+
+      <a role="listitem" class="card3 history" href="go:mphistory">
+        <div class="card3-content">
+          <div>
+            <span1>मध्यप्रदेश का<br>इतिहास</span1>
+            <div style="height:4px"></div>
+            <div style="font-size:9px;color:#ccc; line-height:1.5; max-width:200px">Chapter wise complete history of MP</div>
+          </div>
+        </div>
+        <!-- History scroll / monument icon -->
+        <svg class="icon taj" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="72" height="72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- base plinth -->
+  <rect x="6" y="44" width="52" height="6" rx="1" ></rect>
+  <rect x="10" y="38" width="44" height="6" rx="1" ></rect>
+  <!-- central dome -->
+  <path d="M32 10c-8 0-14 6-14 13v6h28v-6c0-7-6-13-14-13z" ></path>
+  <path d="M26 20c1.5-3 3.5-5 6-5s4.5 2 6 5" ></path>
+  <!-- small finial -->
+  <path d="M32 6v4" ></path>
+  <circle cx="32" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+  <!-- side minarets -->
+  <path d="M10 10v34" ></path>
+  <path d="M54 10v34" ></path>
+  <rect x="8" y="6" width="4" height="4" rx="1" ></rect>
+  <rect x="52" y="6" width="4" height="4" rx="1" ></rect>
+  <!-- decorative arches -->
+  <path d="M16 36c2-3 5-5 10-5s8 2 10 5" ></path>
+  <!-- small details -->
+  <path d="M20 44v-4M44 44v-4" ></path>
+</svg>
+      </a>
+
+      <a role="listitem" class="card3 geo" href="go:mpgeo">
+        <div class="card3-content">
+          <div>
+            <span1>मध्यप्रदेश का<br>भूगोल</span1>
+            <div style="height:4px"></div>
+            <div style="font-size:9px;color:#ccc; line-height:1.5; max-width:200px">Complete geographical features of Madhya Pradesh</div>
+          </div>
+        </div>
+        <!-- Globe icon -->
+        <svg class="icon globe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="72" height="72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- outer circle -->
+  <circle cx="32" cy="28" r="18" ></circle>
+  <!-- meridians -->
+  <ellipse cx="32" cy="28" rx="10" ry="18" ></ellipse>
+  <path d="M32 10v36" ></path>
+  <path d="M20 20c2 4 2 12 0 16M44 20c-2 4-2 12 0 16" ></path>
+  <!-- latitude lines -->
+  <path d="M15 28h34" ></path>
+  <path d="M18 36h28" ></path>
+  <!-- stand -->
+  <path d="M14 54h36" ></path>
+  <path d="M32 46v8" ></path>
+  <path d="M22 50a10 4 0 0 0 20 0" ></path>
+</svg>
+      </a>
+
+      <a role="listitem" class="card3 raj" href="go:mpraj">
+        <div class="card3-content">
+          <div>
+            <span1>संविधान और<br>राजव्यवस्था</span1>
+            <div style="height:4px"></div>
+            <div style="font-size:9px;color:#ccc; line-height:1.5; max-width:200px">The complete constitutional scenario of MP</div>
+          </div>
+        </div>
+        <!-- Constitution / law icon -->
+        <svg class="icon parliament" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="72" height="72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- circular building base -->
+  <path d="M8 30a24 16 0 0 0 48 0" ></path>
+  <path d="M12 30v10a2 2 0 0 0 2 2h36a2 2 0 0 0 2-2V30" ></path>
+  <!-- dome/roof line -->
+  <path d="M8 30h48" ></path>
+  <!-- pillars -->
+  <g>
+    <path d="M14 34v10M18 34v10M22 34v10M26 34v10M30 34v10M34 34v10M38 34v10M42 34v10M46 34v10M50 34v10" ></path>
+  </g>
+  <!-- entrance steps -->
+  <rect x="24" y="44" width="16" height="4" rx="1" ></rect>
+  <!-- emblem-ish flagpole -->
+  <path d="M41 12v6" ></path>
+  <path d="M41 12c2 1 4 1 4 1v-2s-2-1-4-1z" ></path>
+  <!-- circular outer hint -->
+  <circle cx="32" cy="32" r="30" stroke-opacity="0.08" ></circle>
+</svg>
+      </a>
+    </div>
+  </div>
+</div></div>
+
+   <div class="separator" style="clear: both; position:reletive; margin-top:22px;">
+   <section style="margin:10px; border-radius:10px; background:rgba(25,25,25,103);">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-radius:10px; font-family: arya;background:linear-gradient(135deg,orange,#15aabf); box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 0 2px #fff inset;color:#fff;position:relative;overflow:hidden;">
+<div style="width:72%;z-index:5;">
+      <h2 style="margin:0;font-size:15px; color:#000;font-weight:700;">भारत एवं विश्व Static GK 2025</h2>
+      <div style="display:flex; margin-left:-5px; margin-top:10px; gap:5px;flex-wrap:wrap;">
+        <span class="bdg">History</span><span class="bdg">Geography</span><span class="bdg">Polity</span><span class="bdg">Science</span>
+      </div>
+    </div>
+
+    <a href="go:staticgk"><button style="padding:12px 8px;border:0;border-radius:20px;background:orange;color:#fff;font-weight:700;cursor:pointer; margin-top:-15px; margin-right:-5px; width:85px; font-size:12px; animation:pop 1.3s infinite alternate;">Read Now </button></a>
+    <div class="bgc1"></div><div class="bgc2"></div>
+  </div>
+</section>
+    </div>
+    </div>  
+
+</b></div>
+<br>
+<div class="card">
+  <div class="tag-question">सवाल/जवाब</div>
+  <div class="question-text">
+    Engage in meaningful academic conversations, discuss complex topics, and get instant support from peers and teachers—anytime, anywhere <span style="color:red;">!</span>
+  </div>
+
+  <div class="support-badge">
+    <img src="https://files.cdn-files-a.com/uploads/10456964/normal_67e2280d26950.jpg">
+                    <img src="https://files.cdn-files-a.com/uploads/10456964/normal_67e2282a8cad2.jpg">
+                    <img src="https://www.svgrepo.com/show/486520/ai.svg">
+                   
+    24/7 subject experts support
+  </div>
+
+<div class="animated-button" id="chat-button" onclick="openChat()">
+    Ask Your Question
+  </div><br>
+    
+  </div>
+</div>
+<br><br><br>
+  </div>
+</div>
+<br /><br /><br /><br /><br />
+  </div>
+</div>
+</div>
+</div>
+
+<div id="connection-popup22" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.98); color: white; z-index: 9999; align-items: center; justify-content: center;
+    flex-direction: column; font-family: sans-serif; text-align: center;">
+  
+<svg width="100" height="100" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="22" fill="#1f1f1f" stroke="#ff3b3b" stroke-width="2"></circle>
+  <path d="M12 20C17 15 31 15 36 20" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"></path>
+  <path d="M16 24C19.5 21 28.5 21 32 24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"></path>
+  <path d="M20 28C22 26.5 26 26.5 28 28" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Cross Line -->
+  <line x1="14" y1="14" x2="34" y2="34" stroke="#ff3b3b" stroke-width="3" stroke-linecap="round"></line>
+  <!-- Dot for signal -->
+  <circle cx="24" cy="32" r="2.5" fill="#ff3b3b"></circle>
+</svg>
+  <h2 style="margin-top: 20px; letter-spacing:1px;">No Internet Connection</h2><br><span style="color:#ccc; font-size:9px;">Please Check your Internet Connection</span>
+</div>
+
+<script>
+const popup = document.getElementById("connection-popup22");
+let popupShown = false;
+let redirected = false;
+
+function checkConnection() {
+  const isOnline = navigator.onLine;
+
+  if (!isOnline) {
+    // Show popup instantly
+    popup.style.display = "flex";
+    popup.classList.remove("spin-out");
+    popupShown = true;
+    redirected = false;
+    document.body.style.pointerEvents = "none";
+  } else {
+    if (popupShown && !redirected) {
+      // Internet restored and popup was shown before
+      redirected = true;
+      popupShown = false;
+
+      // 🔁 Add spin animation
+      popup.classList.add("spin-out");
+
+      // Allow animation to finish (~600ms) then redirect
+      setTimeout(() => {
+        popup.style.display = "none";
+        document.body.style.pointerEvents = "auto";
+        window.location.href = "go:home"; // ⬅️ यहाँ अपना URL डालें
+      }, 100);
+    }
+  }
+}
+
+checkConnection();
+setInterval(checkConnection, 10);
+</script>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="confirmOverlay" style="
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.85); display:none; justify-content:center;
+  align-items:center; z-index:9999;
+">
+  <div style="
+    background:#fff; padding:20px; border-radius:14px; 
+    width:85%; max-width:360px; text-align:center;
+    animation:popIn .3s ease-out;
+  "><img data-src="https://m2.getsitecontrol.com/images/273034/77da269439f696a0ff819bba65c84cf6_345200039.gif" class="lazy-img" style=" background:#fff; border-radius:50%; margin-top:-70px; padding:15px;" width="40%" /><h2 style="margin-bottom:5px; font-size:14px; font-family:Noto Sans Devanagari; line-height:1.6; color: #006999; font-weight:700; margin-top:5px;">"आज का सवाल – सही जवाब दो और Reward जीतो!"</h2><span style=" Font-size:10px; font-family:Noto Sans Devanagari; line-height:1.5;">आज का सवाल आपका इंतज़ार कर रहा है सही जवाब दें और खास रिवॉर्ड जीतें जिसमें आपको प्रीमियम पीडीऍफ़, टेस्ट सीरीज और भी बहुत कुछ प्राप्त होगा।</span>
+    <h3 style="margin-bottom:15px; background:rgb(0,0,0); padding:7px 10px; border-radius:5px; color: orange; margin-top:15px;">क्या आप आज के प्रश्न का उत्तर देना चाहते हैं?</h3>
+
+    <div style="display:flex; gap:60px; justify-content:center;">
+      <button onclick="confirmYes()" style="
+        padding:10px 25px; background:#4caf50; color:#fff;
+        border:none; border-radius:8px; font-size:14px;
+      ">Yes</button>
+
+      <button onclick="confirmNo()" style="
+        padding:10px 25px; background:#e53935; color:#fff;
+        border:none; border-radius:8px; font-size:14px;
+      ">No</button>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes popIn {
+  from { transform:scale(0.7); opacity:0; }
+  to   { transform:scale(1); opacity:1; }
+}
+</style>
+
+<div id="quizOverlay">
+  <div class="quizBox" id="quizBox">
+
+    <div class="closeIcon" onclick="closeQuiz()">❌</div>
+
+    <div id="questionBox">
+      <div class="quizTitle"><img data-src="https://m2.getsitecontrol.com/images/273034/84eb13cfed01764d9c401219faa56d53_316359268.PNG" class="lazy-img" style=" position: absolute; z-index:-1; background:#fff; border-radius:10px; right:15px; margin-top:2px;" width="72%" /></div>
+     <div class="timer-wrapper">
+  <div id="timerBorder"></div>
+  <div id="timer">90</div>
+</div>
+
+      <div class="quizQuestion" id="quizQ"></div>
+      <div id="quizOptions"></div>
+    </div>
+
+    <!-- Reward -->
+    <div id="rewardBox">
+      <div class="rewardBadge"><svg height="80px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve">
+<g transform="translate(1 1)">
+	<path style="fill:#FFE100;" d="M502.467,255c0,136.533-110.933,247.467-247.467,247.467S7.533,391.533,7.533,255
+		S118.467,7.533,255,7.533S502.467,118.467,502.467,255"></path>
+	<path style="fill:#FFA800;" d="M255,7.533c-4.267,0-8.533,0-12.8,0C372.76,14.36,476.867,122.733,476.867,255
+		S372.76,495.64,242.2,502.467c4.267,0,8.533,0,12.8,0c136.533,0,247.467-110.933,247.467-247.467S391.533,7.533,255,7.533"></path>
+	<path style="fill:#FFFFFF;" d="M255,7.533c4.267,0,8.533,0,12.8,0C137.24,14.36,33.133,122.733,33.133,255
+		S137.24,495.64,267.8,502.467c-4.267,0-8.533,0-12.8,0C118.467,502.467,7.533,391.533,7.533,255S118.467,7.533,255,7.533"></path>
+	<path style="fill:#63D3FD;" d="M417.133,186.733c0,37.547-30.72,68.267-68.267,68.267S280.6,224.28,280.6,186.733
+		s30.72-68.267,68.267-68.267S417.133,149.187,417.133,186.733"></path>
+	<path style="fill:#FFE100;" d="M374.467,186.733c0,14.507-11.093,25.6-25.6,25.6c-14.507,0-25.6-11.093-25.6-25.6
+		s11.093-25.6,25.6-25.6C363.373,161.133,374.467,172.227,374.467,186.733"></path>
+	<path style="fill:#63D3FD;" d="M229.4,186.733c0,37.547-30.72,68.267-68.267,68.267s-68.267-30.72-68.267-68.267
+		s30.72-68.267,68.267-68.267S229.4,149.187,229.4,186.733"></path>
+	<path style="fill:#FFE100;" d="M186.733,186.733c0,14.507-11.093,25.6-25.6,25.6s-25.6-11.093-25.6-25.6s11.093-25.6,25.6-25.6
+		S186.733,172.227,186.733,186.733"></path>
+	<path d="M255,511C114.2,511-1,395.8-1,255S114.2-1,255-1s256,115.2,256,256S395.8,511,255,511z M255,16.067
+		C123.587,16.067,16.067,123.587,16.067,255S123.587,493.933,255,493.933S493.933,386.413,493.933,255S386.413,16.067,255,16.067z"
+		></path>
+	<path d="M348.867,220.867c-18.773,0-34.133-15.36-34.133-34.133s15.36-34.133,34.133-34.133S383,167.961,383,186.734
+		S367.64,220.867,348.867,220.867z M348.867,169.667c-9.387,0-17.067,7.68-17.067,17.067c0,9.387,7.68,17.067,17.067,17.067
+		s17.067-7.68,17.067-17.067C365.933,177.347,358.253,169.667,348.867,169.667z"></path>
+	<path d="M161.133,220.867c-18.773,0-34.133-15.36-34.133-34.133s15.36-34.133,34.133-34.133s34.133,15.36,34.133,34.133
+		S179.907,220.867,161.133,220.867z M161.133,169.667c-9.387,0-17.067,7.68-17.067,17.067c0,9.387,7.68,17.067,17.067,17.067
+		s17.067-7.68,17.067-17.067S170.52,169.667,161.133,169.667z"></path>
+	<path d="M161.133,263.533c-42.667,0-76.8-34.133-76.8-76.8s34.133-76.8,76.8-76.8s76.8,34.133,76.8,76.8
+		S203.8,263.533,161.133,263.533z M161.133,127c-33.28,0-59.733,26.453-59.733,59.733s26.453,59.733,59.733,59.733
+		s59.733-26.453,59.733-59.733S194.413,127,161.133,127z"></path>
+	<path d="M348.867,263.533c-42.667,0-76.8-34.133-76.8-76.8s34.133-76.8,76.8-76.8s76.8,34.133,76.8,76.8
+		S391.533,263.533,348.867,263.533z M348.867,127c-33.28,0-59.733,26.453-59.733,59.733s26.453,59.733,59.733,59.733
+		s59.733-26.453,59.733-59.733S382.147,127,348.867,127z"></path>
+	<path d="M280.6,195.267h-51.2c-5.12,0-8.533-3.413-8.533-8.533c0-5.12,3.413-8.533,8.533-8.533h51.2
+		c5.12,0,8.533,3.413,8.533,8.533C289.133,191.853,285.72,195.267,280.6,195.267z"></path>
+	<path d="M434.2,195.267h-17.067c-5.12,0-8.533-3.413-8.533-8.533c0-5.12,3.413-8.533,8.533-8.533H434.2
+		c5.12,0,8.533,3.413,8.533,8.533C442.733,191.853,439.32,195.267,434.2,195.267z"></path>
+	<path d="M92.867,195.267H75.8c-5.12,0-8.533-3.413-8.533-8.533c0-5.12,3.413-8.533,8.533-8.533h17.067
+		c5.12,0,8.533,3.413,8.533,8.533C101.4,191.853,97.987,195.267,92.867,195.267z"></path>
+	<path d="M255,400.067c-52.907,0-104.96-27.307-134.827-71.68c-2.56-4.267-1.707-9.387,2.56-11.947s9.387-1.707,11.947,2.56
+		c26.453,39.253,72.533,64,120.32,64s93.867-24.747,121.173-64.853c2.56-4.267,7.68-5.12,11.947-2.56s5.12,7.68,2.56,11.947
+		C359.96,372.76,307.907,400.067,255,400.067z"></path>
+</g>
+</svg><br><br>Well Play — आपने सही उत्तर दिया!<br><span style="color:green;">Reward Unlocked!</span></div>
+      <div class="rewardText" id="rewardText"></div>
+
+      <a href="#"><button class="primaryBtn" onclick="openReward()">Claim Your Today's Reward</button></a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FAIL POPUP -->
+<div id="failPopup">
+  <div class="failBox">
+    <div class="failSVG"><svg width="100px" height="100px" viewBox="0 -12.02 94.572 94.572" xmlns="http://www.w3.org/2000/svg">
+  <g id="sad" transform="translate(-205.409 -53.014)">
+    <path id="Path_14" data-name="Path 14" d="M206.832,87.785c.283-26.649,16.426-33.362,45.857-33.353,29.458.009,45.585,6.732,45.869,33.353.293,27.433-16.715,34.458-46.565,34.333C222.506,121.992,206.548,114.549,206.832,87.785Z" fill="#b9e2f8" fill-rule="evenodd"></path>
+    <path id="Path_15" data-name="Path 15" d="M206.832,87.785c.015-1.428.078-2.8.184-4.11,1.853,22.4,17.57,28.84,44.977,28.957,27.8.116,44.46-5.971,46.38-28.97.106,1.319.17,2.69.185,4.123.293,27.433-16.714,34.458-46.565,34.333C222.506,121.992,206.548,114.55,206.832,87.785Z" fill="#1a1818" fill-rule="evenodd" opacity="0.15"></path>
+    <path id="Path_16" data-name="Path 16" d="M205.413,87.774c.148-13.863,4.477-22.577,12.649-27.858,8.008-5.175,19.647-6.907,34.627-6.9s26.629,1.745,34.643,6.925c8.171,5.282,12.5,13.991,12.645,27.835.152,14.26-4.252,23.255-12.624,28.7-8.211,5.341-20.176,7.124-35.366,7.06-15.021-.064-26.638-2.02-34.54-7.422-8.051-5.5-12.181-14.431-12.034-28.34ZM219.6,62.308c-7.328,4.735-11.212,12.7-11.348,25.488-.136,12.855,3.571,21.031,10.8,25.971,7.377,5.043,18.483,6.871,32.949,6.932,14.66.062,26.125-1.606,33.808-6.6,7.52-4.893,11.474-13.128,11.334-26.3C297,75.02,293.123,67.056,285.8,62.319c-7.485-4.838-18.638-6.464-33.107-6.469C238.239,55.846,227.089,57.467,219.6,62.308Z" fill="#1a1818" fill-rule="evenodd"></path>
+    <path id="Path_17" data-name="Path 17" d="M240.627,92.208a1.419,1.419,0,0,1-2.147-1.857,17.965,17.965,0,0,1,1.869-1.873,19.154,19.154,0,0,1,24.684,0,18.133,18.133,0,0,1,1.876,1.874,1.419,1.419,0,0,1-2.146,1.857,15.317,15.317,0,0,0-1.588-1.584,16.308,16.308,0,0,0-20.969,0A15.239,15.239,0,0,0,240.627,92.208Z" fill="#1a1818" fill-rule="evenodd"></path>
+    <path id="Path_18" data-name="Path 18" d="M228.951,82.24a6.226,6.226,0,1,0-6.226-6.226A6.238,6.238,0,0,0,228.951,82.24Z" fill="#1a1818" fill-rule="evenodd"></path>
+    <path id="Path_19" data-name="Path 19" d="M228.356,75.624a2,2,0,1,0-2-2A2,2,0,0,0,228.356,75.624Z" fill="#ffffff" fill-rule="evenodd"></path>
+    <path id="Path_20" data-name="Path 20" d="M226.258,78.943a1.241,1.241,0,1,0-1.241-1.24A1.242,1.242,0,0,0,226.258,78.943Z" fill="#ffffff" fill-rule="evenodd"></path>
+    <g id="Group_5" data-name="Group 5">
+      <path id="Path_21" data-name="Path 21" d="M276.439,82.24a6.226,6.226,0,1,0-6.226-6.226A6.238,6.238,0,0,0,276.439,82.24Z" fill="#1a1818" fill-rule="evenodd"></path>
+      <path id="Path_22" data-name="Path 22" d="M275.845,75.624a2,2,0,1,0-2-2A2,2,0,0,0,275.845,75.624Z" fill="#ffffff" fill-rule="evenodd"></path>
+      <path id="Path_23" data-name="Path 23" d="M273.747,78.943a1.241,1.241,0,1,0-1.241-1.24A1.242,1.242,0,0,0,273.747,78.943Z" fill="#ffffff" fill-rule="evenodd"></path>
+    </g>
+    <path id="Path_24" data-name="Path 24" d="M231.978,88.89l-6.057,0a1.68,1.68,0,0,1-1.171-2.884,5.51,5.51,0,0,1,.471-.459,5.767,5.767,0,0,1,7.456,0,5.536,5.536,0,0,1,.568.568,1.678,1.678,0,0,1-1.267,2.773Z" fill="#eb505e" fill-rule="evenodd"></path>
+    <path id="Path_25" data-name="Path 25" d="M279.468,88.892H273.41A1.68,1.68,0,0,1,272.247,86a5.581,5.581,0,0,1,.462-.449,5.77,5.77,0,0,1,7.458,0,5.471,5.471,0,0,1,.567.56,1.68,1.68,0,0,1-1.266,2.782Z" fill="#eb505e" fill-rule="evenodd"></path>
+    <path id="Path_26" data-name="Path 26" d="M228.95,82.738c2.345,0,4.258-.717,4.258-1.6s-1.913-1.6-4.258-1.6-4.258.717-4.258,1.6S226.6,82.738,228.95,82.738Z" fill="#00a1ed" fill-rule="evenodd"></path>
+    <path id="Path_27" data-name="Path 27" d="M276.439,82.738c2.345,0,4.258-.717,4.258-1.6s-1.913-1.6-4.258-1.6-4.259.717-4.259,1.6S274.093,82.738,276.439,82.738Z" fill="#00a1ed" fill-rule="evenodd"></path>
+  </g>
+</svg></div><span style="font-size:16px; font-weight:700; font-family:Noto Sans Devanagari; letter-spacing:1.5px; color:red; line-height:2;">Wrong Answer</span><br>
+    <div style="font-size:13px; font-weight:700; font-family:Noto Sans Devanagari;">Better Luck Next Day</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+
+const quizBank = [
+  {  question: "एक वृत्त के एक त्रिज्याखंड का क्षेत्रफल 308 वर्ग सेमी है, जिसके केंद्रीय कोण की माप 45° है। वृत्त की त्रिज्या ज्ञात कीजिये?", options: ["14 सेमी",  "21 सेमी" ,"7 सेमी", "28 सेमी"], answer: 3, rewardData: {
+      title: "हस्तलिखित भारतीय इतिहास : तीनों खंड ",
+      url: "https://drive.google.com/drive/folders/1rHI3CWzpOJrUqswtkQ9q1lLyIt9Ut_8p?usp=sharing",
+      btn: "Open Now"
+    }
+  },
+  
+   { question:"A, M का पति है जो N की भाभी है। N, R और U की बेटी है। M, U की पुत्रवधू है। A, U से किस प्रकार संबंधित है?", options: ["पिता", "बेटा", "भाई","साला"],
+  answer: 1, rewardData: {
+      title: "कंप्यूटर : सामान्य परिचय",
+      url: "https://drive.google.com/file/d/1dH_h2cAMUawUzkNecbKxWrbJ6MhD9iHA/view?usp=sharing",
+      btn: "Read Now"
+    }
+  },
+  
+   {question:'दूधिया मैग्नीशियम (मिल्क ऑफ मैग्नीशिया) में कौन सा क्षारक मौजूद होता है?', options:["मैग्नीशियम हाइड्रॉक्साइड","अमोनियम हाइड्रॉक्साइड","सोडियम हाइड्रोक्साइड","कैल्शियम हाइड्रॉक्साइड"], answer:0, rewardData: {
+      title: "Topper Notes : Handwritten Science",
+      url: "https://drive.google.com/drive/folders/12h4BrP7das4K7-7DQmmQWZq3EG8zXvhd?usp=sharing",
+      btn: "Read Now"
+    }
+  },
+   
+   {question:'आठ दोस्त A, B, C, D, E, F, G और H भोजन के लिए वृत्ताकार मेज़ के चारों ओर एक-दूसरे के सम्मुख बैठे हैं। A, D के विपरीत है और B के दाएँ तीसरा है। G, A और F के बीच में है। H, A के ठीक दाएँ हैं। E, C और D के बीच में है। C के विपरीत कौन बैठा है?', options:["B","G","F","E"], answer:2, rewardData: {
+      title: "वार्षिक करेंट अफेयर्स 2025 (80% OFF)",
+      url: "go:80%off",
+      btn: "Buy Now"
+    }
+  },
+  
+   {question:"O, ΔABC का परिकेंद्र है। यदि ∠BAC = 75° और ∠BCA = 80°, तब ∠OAC का मान (अंश में) क्या है?", options:["45°","65°","90°","95°"],
+           answer:1, rewardData: {
+      title: "Trigonometry Top Questions and Formulas",
+      url: "https://drive.google.com/file/d/13oe8Xyj74zEc_Y7D95ieoBM10IMJU4C-/view?usp=sharing",
+      btn: "Download PDF"
+    }
+  },
+           
+ {question:"₹14460 की राशि A, B, C और D के बीच इस प्रकार विभाजित की जाती है कि A और B के हिस्सों का अनुपात 3 : 5 है, B और C का अनुपात 6 : 7 है और C और D का अनुपात 14 : 15 है। A और C के हिस्सों में कितना अंतर है?", options:["₹1440","₹1500","₹2100","₹2040"],
+           answer:3, rewardData: {
+      title: "करेंट अफेयर्स वार्षिकांक 2024 [Free]",
+      url: "https://drive.google.com/file/d/1Hni833SJBV_YK4YmH-bVNZSoQATq5Rsh/view?usp=sharing",
+      btn: "निःशुल्क पढ़ें"
+    }
+  },
+           
+ {question:'दो नल A और B एक टंकी को क्रमशः 12 घंटे और 16 घंटे में भर सकते हैं, जबकि नल C टंकी को 8 घंटे में खाली कर सकता है। यदि वे सभी एकसाथ खुले हैं, तो टंकी भरने में लिया गया कुल समय क्या है?', options:["36 घंटे","26 घंटे","48 घंटे","18 घंटे"], answer:2, rewardData: {
+      title: "Current Affairs Quick Revision Jan. to Dec. 2025",
+      url: "go:testseris",
+      btn: "Start Test"
+    }
+  },
+   
+   {question:'एक निश्चित कूट भाषा में, "123" का अर्थ "hot filtered coffee", "356" का अर्थ "very hot day" और "589" का अर्थ “day and night" है। किस अंक का अर्थ "very" है?', options:["9","5","6","3"], answer:2, rewardData: {
+      title: "Indian & World Geography top 500 Question",
+      url: "https://drive.google.com/file/d/1xW3WhRZYH-EClq36GMRY19jj6hxz8bSI/view?usp=sharing",
+      btn: "Download PDF"
+    }
+  },
+   
+   {question:'यदि 20 पुरुष 24 दिनों में एक पुल का निर्माण कर सकते हैं, तो 32 पुरुष कितने दिनों में दो ऐसे पुलों का निर्माण कर सकते हैं?', options:["30 दिन","24 दिन","20 दिन","15 दिन"], answer:0, rewardData: {
+      title: "भारतीय इतिहास विविध प्रश्नावली",
+      url: "https://drive.google.com/file/d/1yG9k5nszxwMsrCVeFbhpncF4fTASQP8M/view?usp=sharing",
+      btn: "Open PDF"
+    }
+  }
+];
+
+/* Pick Random Question (once per load) */
+const dailyQuiz = quizBank[Math.floor(Math.random() * quizBank.length)];
+
+/* Sounds */
+const tickSound  = new Audio("https://files.cdn-files-a.com/uploads/10456199/normal_680db76b879b8.mp3");
+const openSound  = new Audio("https://www.myinstants.com/media/sounds/kbc-question.mp3");
+
+/* Storage Keys */
+const LS_ANSWER = "quizAnswered";
+const LS_LOCK = "quizLock";
+const LS_REWARDS = "myRewardCards";
+const LS_CONFIRM_LOCK = "quizConfirmLock";
+
+/* Timer state (use local variables per-run) */
+let timerValueDefault = 90; // default seconds for each quiz shown
+let countdown = null;
+let answered = false;
+let quizShown = false;
+
+/* CONFETTI CANVAS (keep as before) */
+(function() {
+  const confettiCanvas = document.createElement("canvas");
+  confettiCanvas.id = "confetti-top-layer";
+  confettiCanvas.style.position = "fixed";
+  confettiCanvas.style.top = "0";
+  confettiCanvas.style.left = "0";
+  confettiCanvas.style.width = "100%";
+  confettiCanvas.style.height = "100%";
+  confettiCanvas.style.pointerEvents = "none";
+  confettiCanvas.style.zIndex = "9999999";
+  document.body.appendChild(confettiCanvas);
+
+  if (window.confetti === undefined && typeof confetti !== "undefined") {
+    window.confetti = confetti.create(confettiCanvas, { resize: true });
+  } else if (typeof confetti !== "undefined") {
+    window.confetti = confetti.create(confettiCanvas, { resize: true });
+  } else {
+    // confetti library not loaded - ignore
+    window.confetti = function() {};
+  }
+})();
+
+function checkScrollToShowQuiz() {
+  if (window.quizShown) return;
+
+  let scrollTop = window.scrollY || window.pageYOffset;
+  let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  let scrolledPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+  if (scrolledPercent >= 30) {
+    window.quizShown = true;
+    showConfirmPopup();
+  }
+}
+window.addEventListener("scroll", checkScrollToShowQuiz);
+
+/* SHOW confirm first */
+function showConfirmPopup() {
+  let lock = Number(localStorage.getItem(LS_CONFIRM_LOCK) || 0);
+  // lock is timestamp; here we don't have a waiting window so just show unless set
+  if (lock && (Date.now() - lock) < (12 * 60 * 60 * 1000)) { // if set within last 2 hours skip
+    return;
+  }
+  const el = document.getElementById("confirmOverlay");
+  if (el) el.style.display = "flex";
+}
+
+/* YES → Show quiz popup */
+function confirmYes() {
+localStorage.setItem(LS_CONFIRM_LOCK, Date.now());
+  const el = document.getElementById("confirmOverlay");
+  if (el) el.style.display = "none";
+
+  try { openSound.play(); } catch(e){}
+
+  initQuiz();
+}
+
+/* NO → hide for 2 hours */
+function confirmNo() {
+
+  const el = document.getElementById("confirmOverlay");
+  if (el) el.style.display = "none";
+}
+
+/* Should Show (respect storage lock) */
+function shouldShowQuiz() {
+  let ans = localStorage.getItem(LS_ANSWER);
+  if (ans === "yes") {
+    let lock = Number(localStorage.getItem(LS_LOCK) || 0);
+    let diff = Date.now() - lock;
+    // if lock older than 12 hours -> allow again (adjust as desired)
+    if (diff >= (8 * 60 * 60 * 1000)) {
+      localStorage.removeItem(LS_ANSWER);
+      localStorage.removeItem(LS_LOCK);
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
+/* Init quiz (open overlay + load question + start timer) */
+function initQuiz() {
+  if (!shouldShowQuiz()) return;
+
+  const overlay = document.getElementById("quizOverlay");
+  if (overlay) overlay.style.display = "flex";
+
+  loadQuestion();
+  startTimer(); // uses timerValueDefault internally
+}
+
+/* Load Question into DOM */
+function loadQuestion() {
+  const qEl = document.getElementById("quizQ");
+  if (qEl) qEl.textContent = dailyQuiz.question;
+
+  const optBox = document.getElementById("quizOptions");
+  if (!optBox) return;
+  optBox.innerHTML = "";
+
+  const labels = ["A", "B", "C", "D"];
+  (dailyQuiz.options || []).forEach((op, i) => {
+    let div = document.createElement("div");
+    div.className = "option";
+    div.textContent = `${labels[i]}. ${op}`;
+    div.onclick = () => selectAnswer(i, div);
+    optBox.appendChild(div);
+  });
+
+  // Ensure reward box hidden and question box visible when loading
+  const rewardBox = document.getElementById("rewardBox");
+  const questionBox = document.getElementById("questionBox");
+  if (rewardBox) rewardBox.style.display = "none";
+  if (questionBox) questionBox.style.display = "block";
+  answered = false;
+}
+
+function startTimer() {
+  // clear previous if any
+  if (countdown) clearInterval(countdown);
+
+  let timer = timerValueDefault;
+  const fullTime = timer;
+  const timerBox = document.getElementById("timer");
+  const border = document.getElementById("timerBorder");
+
+  if (timerBox) timerBox.textContent = `${timer}`;
+
+  countdown = setInterval(() => {
+    timer--;
+    try { if (timer > 0) tickSound.play(); } catch(e){}
+
+    if (timerBox) timerBox.textContent = `${timer}`;
+
+    const progress = (timer / fullTime) * 360;
+    if (border) border.style.background = `conic-gradient(orange ${progress}deg, transparent ${progress}deg)`;
+
+    if (timer === 60 && timerBox) {
+      timerBox.style.background = "#ff3b3b";
+      timerBox.style.color = "#fff";
+      timerBox.style.padding = "12px 10px";
+      timerBox.style.borderRadius = "50%";
+      timerBox.style.transition = "0.3s ease";
+    }
+
+    if (timer <= 20 && timer > 0 && timerBox) {
+      timerBox.style.animation = "blinkTimer 0.7s infinite";
+    }
+
+    if (timer <= 0) {
+      clearInterval(countdown);
+      countdown = null;
+      try { tickSound.pause(); tickSound.currentTime = 0; } catch(e){}
+      if (timerBox) timerBox.style.animation = "";
+      showFailOnTimeout();
+    }
+  }, 1000);
+}
+
+function saveRewardCard(rewardData) {
+  if (!rewardData || !rewardData.url) return;
+
+  let allRewards = JSON.parse(localStorage.getItem(LS_REWARDS) || "[]");
+
+  // avoid duplicate by URL
+  const exists = allRewards.some(r => r.url === rewardData.url);
+  if (exists) return;
+
+  allRewards.push({
+    title: rewardData.title || "Reward",
+    url: rewardData.url,
+    btn: rewardData.btn || "Open Reward",
+    time: new Date().toLocaleString()
+  });
+
+  localStorage.setItem(LS_REWARDS, JSON.stringify(allRewards));
+}
+
+/* Reward Page Popup (shows saved reward cards) */
+function updateRewardsButtonBadge() {
+  const btn = document.getElementById("myRewardsBtn");
+  if (!btn) return;
+
+  // remove old badge
+  let oldBadge = btn.querySelector(".reward-count-badge");
+  if (oldBadge) oldBadge.remove();
+
+  const allRewards = JSON.parse(localStorage.getItem(LS_REWARDS) || "[]");
+  const count = allRewards.length;
+  if(count === 0) return;
+
+  const badge = document.createElement("span");
+  badge.className = "reward-count-badge";
+  badge.textContent = count;
+  badge.style.cssText = `
+    position:absolute;
+    top:-6px; right:-10px;
+    background:#eb505e;
+    color:white;
+    font-size:8px;
+    font-weight:300;
+    padding:3px 5px;
+    border-radius:50%;
+    animation: pulseCount 0.8s ease-in-out 3;
+  `;
+
+  btn.style.position = "relative"; // ensure relative
+  btn.appendChild(badge);
+
+  // remove animation after it ends
+  badge.addEventListener("animationend", () => {
+    badge.style.animation = "";
+  });
+}
+
+// Add keyframes for pulse
+if (!document.getElementById("pulseCountKeyframes")) {
+  const style = document.createElement("style");
+  style.id = "pulseCountKeyframes";
+  style.innerHTML = `
+    @keyframes pulseCount {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+    @keyframes closePopupAnim {
+      0% { transform: scale(1); opacity:1; }
+      100% { transform: scale(0); opacity:0; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function saveRewardCardWithButton(rewardData) {
+  if (!rewardData || !rewardData.url) return;
+
+  let allRewards = JSON.parse(localStorage.getItem(LS_REWARDS) || "[]");
+  if (allRewards.some(r => r.url === rewardData.url)) return;
+
+  allRewards.push({
+    title: rewardData.title || "Reward",
+    url: rewardData.url,
+    btn: rewardData.btn || "Open Reward",
+    time: new Date().toLocaleString()
+  });
+
+  localStorage.setItem(LS_REWARDS, JSON.stringify(allRewards));
+
+  // show badge on button
+  updateRewardsButtonBadge();
+}
+
+function showMyRewardsPopup() {
+  const btn = document.getElementById("myRewardsBtn");
+
+  // remove badge on button click
+  let oldBadge = btn.querySelector(".reward-count-badge");
+  if(oldBadge) oldBadge.remove();
+
+  const allRewards = JSON.parse(localStorage.getItem(LS_REWARDS) || "[]");
+
+  let box = document.createElement("div");
+  box.style.cssText = `
+    position:fixed; inset:0; background:#fff;
+    z-index:999999; overflow:auto; padding:0px;
+  `;
+
+  let inner = document.createElement("div");
+  inner.style.cssText = `
+    background:white; padding:14px; border-radius:14px; margin:20px auto; 
+    font-family:Noto Sans Devanagari;
+  `;
+
+  inner.innerHTML = `<h2 style="margin-bottom:20px; letter-spacing:1.3px; color:#006999; text-align:center;">
+    My Daily Rewards
+  </h2>`;
+
+  if(allRewards.length === 0) {
+    inner.innerHTML += `<p style="text-align:center; margin-top:100px;">
+<svg width="165px" height="165px" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M410.743 884.745C377.113 883.26 343.043 879.115 310.866 869.407C283.156 860.364 272.847 842.713 271.82 813.438C272.035 720.873 250.079 621.894 276.757 531.952C290.122 495.404 330.224 502.355 361.755 500.261C455.049 495.515 548.213 498.478 641.562 500.162C549.982 446.71 457.242 395.023 364.262 343.943C307.191 313.432 348.594 245.654 370.429 204.712C400.979 155.328 474.267 217.955 510.99 233.875C513.705 69.6619 720.828 86.4819 690.35 311.305C833.531 134.295 997.467 334.499 843.717 432.441C873.409 457.665 937.548 476.236 915.324 525.794C905.258 549.457 892.517 572.246 880.194 594.8C874.934 608.546 861.898 612.79 850.601 618.581C841.327 621.361 831.334 615.59 822.642 610.189C820.378 673.721 856.149 871.729 760.575 871.169C722.415 872.226 684.246 872.935 646.106 874.397C567.656 877.679 489.191 882.658 410.743 884.745ZM600.964 831.918C652.333 830.971 703.891 828.769 755.281 827.528C769.209 827.142 772.46 826.106 775.325 812.559C791.831 738.729 774.98 662.338 778.405 587.674C779.738 583.03 778.052 580.945 774.426 578.68C753.566 565.651 732.685 552.645 712.106 539.18C702.463 532.871 693.04 529.421 680.86 530.251C653.002 533.023 625.147 529.847 597.427 533.488C598.602 632.7 599.78 731.98 600.964 831.918ZM458.831 531.56C417.806 533.54 377.188 532.258 336.803 538.339C317.814 541.905 316.94 542.091 311.989 559.569C309.085 590.609 307.462 622.187 307.589 653.343C308.717 707.002 312.085 760.613 314.239 814.255C314.51 820.996 317.005 825.482 323.176 827.426C369.467 842.964 419.887 840.861 467.8 838.489C468.261 736.244 472.551 634.364 458.831 531.56ZM547.188 402.645C560.958 378.23 574.459 354.292 588.166 329.987C529.472 296.33 472.237 258.615 410.802 230.183C406.757 228.387 404.395 229.498 402.548 233.55C397.143 245.412 390.959 256.941 386.029 268.988C383.419 280.471 371.685 298.412 385.638 306.294C439.456 338.629 492.227 372.149 547.188 402.645ZM712.656 403.991C698.961 426.924 685.534 449.408 672.665 470.959C728.74 505.984 784.545 540.841 840.365 575.707C846.111 567.505 885.213 512.205 873.241 503.38C819.898 470.209 766.455 436.393 712.656 403.991ZM709.331 351.517C731.936 366.017 755.769 377.475 777.635 392.861C791.23 402.313 802.666 402.638 816.657 394.963C889.196 367.478 866.473 260.489 784.958 291.655C755.243 305.624 734.143 330.326 709.331 351.517ZM649.758 316.619C652.058 271.691 659.021 221.147 629.688 184.296C607.486 159.366 568.651 169.356 561.713 207.729C556.91 225.983 562.029 244.102 563.285 262.266C588.772 283.08 620.9 297.443 649.758 316.619ZM501.834 530.778C505.93 633.295 512.02 734.985 499.973 837.085C507.153 836.734 512.092 836.493 517 836.253C521.373 734.823 518.717 632.308 514.404 530.778C510.242 530.778 507.013 530.778 501.834 530.778ZM623.717 351.414C609.012 374.805 594.54 397.825 579.86 421.175C584.051 423.585 588.115 425.922 591.098 427.637C604.454 403.385 617.556 379.591 630.833 355.483C628.162 353.956 625.832 352.623 623.717 351.414Z" fill="red"></path><br>
+  <p style="color:red; text-align:center; margin-top:10px; font-weight:700; font-size:20px;">
+    No Rewards Found
+  </p>
+  <p style="font-size:12px; text-align:center; margin-top:5px; color:#000;">Earn Rewards by answering daily questions correctly.
+  </p>
+</svg>
+    </p>`;
+  }
+
+  /* ✅ NEW: Reverse list so newest reward comes first */
+  const reversed = [...allRewards].reverse();
+
+  reversed.forEach((r, index) => {
+  let rewardId = "reward_new_badge_" + index;
+
+  inner.innerHTML += `
+    <div style="
+      padding:14px 10px; border:1px solid #ddd; border-radius:10px;
+      margin-bottom:15px; background:rgb(0,10,250,0.7); 
+      display:flex; justify-content:space-between; align-items:center; position:relative;
+    ">
+      <span style="font-size:13px; width:200px; color:#fff; font-weight:700;">
+        ${r.title}
+      </span>
+
+      <a href="${r.url}" onclick="removeNewBadge('${rewardId}')">
+        <button style="
+          padding:8px 14px; border:none; margin-right:2px; margin-top:0px; border-radius:8px;
+          background:#fff; font-weight:bold; color:#000; font-size:12px;
+        ">${r.btn}</button>
+      </a>
+
+      ${index === 0 ? `
+        <span id="${rewardId}" style="
+          position:absolute; top:-8px; right:-8px; 
+          background:#ffeb3b; color:#000; padding:2px 6px; 
+          font-size:10px; font-weight:bold; border-radius:6px;
+        ">NEW</span>
+      ` : ""}
+    </div>
+  `;
+});
+
+  // Close button with animation
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "⬅ Back";
+  closeBtn.style.cssText = `
+    top:20px; position:absolute; padding:10px 20px; width:90px;
+    background:#e53935; left:-10px; color:#fff; border:none; border-radius:0px 10px 10px 0px;
+    cursor:pointer;
+  `;
+  closeBtn.onclick = function() {
+    inner.style.animation = "closePopupAnim 0.3s forwards";
+    setTimeout(() => { box.remove(); }, 100);
+  };
+  inner.appendChild(closeBtn);
+
+  box.appendChild(inner);
+  document.body.appendChild(box);
+}
+
+// Initialize button click
+document.getElementById("myRewardsBtn").onclick = showMyRewardsPopup;
+
+// Update badge on page load if rewards exist
+window.addEventListener("load", () => {
+  const allRewards = JSON.parse(localStorage.getItem(LS_REWARDS) || "[]");
+  if(allRewards.length > 0) updateRewardsButtonBadge();
+});
+
+function removeNewBadge(id) {
+  let el = document.getElementById(id);
+  if(el) el.remove();
+}
+
+function stopTickSound() {
+  try { tickSound.pause(); tickSound.currentTime = 0; } catch(e){}
+}
+
+function selectAnswer(i, div) {
+  if (answered) return;
+
+  answered = true;
+  if (countdown) { clearInterval(countdown); countdown = null; }
+
+  /* TIMER SOUND STOP */
+  stopTickSound();
+
+  localStorage.setItem(LS_ANSWER, "yes");
+  localStorage.setItem(LS_LOCK, Date.now());
+
+  document.querySelectorAll(".option").forEach(o => o.style.pointerEvents = "none");
+
+  if (i === dailyQuiz.answer) {
+    div.classList.add("correct");
+
+    try { window.confetti({ particleCount: 80, spread: 100, origin: { y: 0.7 } }); } catch(e){}
+
+    // Show reward popup (works now)
+    showReward();
+  } else {
+    div.classList.add("wrong");
+    showFailPopup();
+  }
+}
+
+/* Timeout Fail */
+function showFailOnTimeout() {
+  localStorage.setItem(LS_ANSWER, "yes");
+  localStorage.setItem(LS_LOCK, Date.now());
+  showFailPopup();
+}
+
+/* Reward Show -> uses dailyQuiz.rewardData and shows rewardBox */
+function showReward() {
+  // prepare rewardText - prefer rewardData.title or fallback text
+  const rewardText = (dailyQuiz.rewardData && dailyQuiz.rewardData.title) ? 
+                      `आपका Reward — ${dailyQuiz.rewardData.title}` : 
+                      "आपने सही उत्तर दिया! आपका Reward Unlocked है।";
+
+  const rewardTextEl = document.getElementById("rewardText");
+  if (rewardTextEl) rewardTextEl.textContent = rewardText;
+
+  const questionBox = document.getElementById("questionBox");
+  const rewardBox = document.getElementById("rewardBox");
+  if (questionBox) questionBox.style.display = "none";
+  if (rewardBox) rewardBox.style.display = "block";
+
+  // Auto-save card as soon as reward is shown (but still avoid duplicates)
+  if (dailyQuiz.rewardData) saveRewardCard(dailyQuiz.rewardData);
+  updateRewardsButtonBadge();
+}
+
+/* Reward Button -> close overlay and keep saved card; does NOT redirect */
+function openReward() {
+  const box = document.getElementById("quizBox");
+  if (box) box.classList.add("jello-close");
+
+  setTimeout(() => {
+    const overlay = document.getElementById("quizOverlay");
+    if (overlay) overlay.style.display = "none";
+
+    stopTickSound();
+
+    // Optional: directly open My Rewards modal after closing quiz
+    // showMyRewards();
+  }, 600);
+}
+
+/* Fail Popup */
+function showFailPopup() {
+  const fp = document.getElementById("failPopup");
+  if (fp) fp.style.display = "flex";
+
+  setTimeout(() => {
+    const fp2 = document.getElementById("failPopup");
+    if (fp2) fp2.style.display = "none";
+    closeQuiz();
+  }, 2500);
+}
+
+/* Close Quiz */
+function closeQuiz() {
+  const overlay = document.getElementById("quizOverlay");
+  if (overlay) overlay.style.display = "none";
+
+  if (countdown) { clearInterval(countdown); countdown = null; }
+
+  stopTickSound();
+}
+
+/* On load: ensure rewardBox hidden by default if exists */
+window.addEventListener("load", () => {
+  const rb = document.getElementById("rewardBox");
+  if (rb) rb.style.display = "none";
+});
+
+</script>
+
+<script type="text/javascript">
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "a6278d0c-b1b0-40aa-974f-013e04ca4850";
+
+  // Chat open/close toggle
+  function openChat() {
+    if (window.$crisp && $crisp.push) {
+      const isOpen = document.body.classList.contains("chat-open");
+
+      if (isOpen) {
+        $crisp.push(["do", "chat:close"]);
+      } else {
+        $crisp.push(["do", "chat:show"]);
+        $crisp.push(["do", "chat:open"]);
+        document.body.classList.add("chat-open");
+      }
+    }
+  }
+
+  // Load Crisp
+  (function () {
+    var d = document;
+    var s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+
+    s.onload = function () {
+      console.log("Crisp loaded successfully");
+      $crisp.push(["do", "chat:hide"]);
+
+      // When chat opens
+      $crisp.push(["on", "chat:opened", function () {
+        document.body.classList.add("chat-open");
+      }]);
+
+      // When chat closes
+      $crisp.push(["on", "chat:closed", function () {
+        document.body.classList.remove("chat-open");
+        $crisp.push(["do", "chat:hide"]);
+      }]);
+    };
+
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+</script>
+
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+
+  // 🎯 ACTIVE_TAB_CODE से टैब को active करें
+  window.addEventListener('DOMContentLoaded', () => {
+    tabs.forEach(tab => {
+      const code = tab.getAttribute('data-code');
+      if (code === persistentTabCode) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+  });
+
+  // क्लिक पर 3 सेकंड के लिए animation और redirection
+  tabs.forEach(tab => {
+    const code = tab.getAttribute('data-code');
+    
+    if (code !== persistentTabCode) {
+      tab.addEventListener('click', () => {
+        tab.classList.add('active');
+
+        // 3 सेकंड बाद remove
+        setTimeout(() => {
+          tab.classList.remove('active');
+        }, 3000);
+
+        const url = tab.getAttribute('data-url');
+        setTimeout(() => {
+          window.location.href = url;
+        }, 100);
+      });
+    }
+  });
+</script>
+<script>
+  const rssUrl = 'https://242310604.hs-sites-na2.com/rss.xml';
+  const proxyUrl = `https://sweet-base-34f7.kgfads100.workers.dev/?url=${encodeURIComponent(rssUrl)}`;
+  let unseenPosts = new Set();
+
+  function updateNotificationBadge() {
+    const caTab = document.querySelector('.tab[data-code="ca"]');
+    let badge = caTab.querySelector('.badge');
+    if (unseenPosts.size > 0) {
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'badge';
+        caTab.appendChild(badge);
+      }
+      badge.textContent = unseenPosts.size;
+    } else {
+      if (badge) badge.remove();
+    }
+  }
+
+  async function checkNewPosts() {
+    try {
+      const response = await fetch(proxyUrl);
+      const data = await response.text(); // Proxy returns XML directly
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(data, 'text/xml');
+      const items = xml.querySelectorAll('item');
+      const savedPostIds = JSON.parse(localStorage.getItem('seenPostIds') || '[]');
+      let newFound = false;
+
+      items.forEach(item => {
+        const postId = item.querySelector('guid')?.textContent || 
+                       (item.querySelector('link')?.textContent + "|" + item.querySelector('title')?.textContent);
+        if (postId && !savedPostIds.includes(postId) && !unseenPosts.has(postId)) {
+          unseenPosts.add(postId);
+          newFound = true;
+        }
+      });
+
+      if (newFound) updateNotificationBadge();
+
+    } catch (error) {
+      console.error("RSS Fetch Error:", error);
+    }
+  }
+
+  function clearNotificationBadge() {
+    const caTab = document.querySelector('.tab[data-code="ca"]');
+    const badge = caTab.querySelector('.badge');
+    if (badge) badge.remove();
+
+    const savedPostIds = JSON.parse(localStorage.getItem('seenPostIds') || '[]');
+    const allSeen = [...unseenPosts, ...savedPostIds].slice(0, 100); // Limit to 100 for size
+    localStorage.setItem('seenPostIds', JSON.stringify(allSeen));
+    unseenPosts.clear();
+  }
+
+  // 👇 Event listener to clear on tab click
+  document.querySelector('.tab[data-code="ca"]').addEventListener('click', () => {
+    clearNotificationBadge();
+    // You can also redirect here if needed: window.location.href = "/ca-news.html";
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    checkNewPosts();
+    setInterval(checkNewPosts, 5000); // Every 30 sec
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".lazy-img");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove("lazy-img");
+        obs.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: "100px"
+  });
+
+  images.forEach(img => observer.observe(img));
+});
+</script>
+<script>
+/* ================================
+   🔥 ALL-IN-ONE AUTO CACHE SYSTEM
+   Works with ONLY index.html
+   Images, Icons, CSS, JS cached
+   Works on GitHub Pages & Hosting
+   ================================ */
+
+if ("serviceWorker" in navigator) {
+
+  const swCode = `
+    const CACHE_NAME = "auto-cache-v1";
+
+    self.addEventListener("install", e => {
+      self.skipWaiting();
+    });
+
+    self.addEventListener("activate", e => {
+      e.waitUntil(
+        caches.keys().then(keys => {
+          return Promise.all(
+            keys.map(k => {
+              if (k !== CACHE_NAME) return caches.delete(k);
+            })
+          );
+        })
+      );
+      self.clients.claim();
+    });
+
+    self.addEventListener("fetch", e => {
+      const req = e.request;
+
+      if (
+        req.destination === "image" ||
+        req.destination === "style" ||
+        req.destination === "script" ||
+        req.url.includes("icon")
+      ) {
+        e.respondWith(
+          caches.match(req).then(cacheRes => {
+            if (cacheRes) return cacheRes;
+
+            return fetch(req).then(netRes => {
+              return caches.open(CACHE_NAME).then(cache => {
+                cache.put(req, netRes.clone());
+                return netRes;
+              });
+            });
+          })
+        );
+      }
+    });
+  `;
+
+  const blob = new Blob([swCode], { type: "application/javascript" });
+  const swURL = URL.createObjectURL(blob);
+
+  navigator.serviceWorker.register(swURL)
+    .then(() => console.log("✅ Auto Cache System Enabled"))
+    .catch(err => console.log("❌ Cache Error:", err));
+
+}
+</script>
